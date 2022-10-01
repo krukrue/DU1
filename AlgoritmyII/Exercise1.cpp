@@ -192,38 +192,27 @@ bool Exercise1::AdditionControl(int* elements, unsigned int elementsLength, int 
 	int n = sizeof(elements) / sizeof(elements[0]);
 
 	int low = 0;
-	int high = n - 1;
-	for (int i = 0; i <= elementsLength - 1; i++) {
-		int dif = addition - elements[i];
-		low = 0;
-		high = n - 1;
-		while (low <= high) {
-			int mid = low + (high - low) / 2;
-			if (elements[mid] == dif) {
-				return true;
-			}
-			if (elements[mid] < dif) {
-				low = mid + 1;
-			}
-			else {
-				high = mid - 1;
-			}
-		}
+	int high = elementsLength - 1;
 
+
+	while (low < high) {
+			
+		if (elements[low] + elements[high] == addition) {
+			return true;
+		}
+		if (elements[low] + elements[high] > addition){
+			high--;
+		}
+		else {
+			low++;
+		}
 	}
+
+	
 	return false;
 
 }
-//	for (int i = 0; i <= elementsLength - 1; i++)
-	//{
-		//int dif = addition - elements[i];
-		//if (binarySearch(elements, dif, 0, n-1) != (- 1) ) {
-			//return true;
-		//}
 
-	//}
-
-	//return false;
 
 
 
